@@ -1,0 +1,112 @@
+#:kivy 1.0.9
+
+<Button>:
+    font_size: 12
+    font_name: 'OpenSans-Bold'
+
+<HydrocarbonSandbox>:
+    segments_label: segments_label
+
+    canvas.before:
+        Color:
+            rgba: (30/255, 30/255, 30/255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size       
+
+    AnchorLayout:
+        size: root.width, root.height
+        padding: 10
+        anchor_x: 'left'
+        anchor_y: 'top'
+
+        BoxLayout:
+            orientation: 'vertical'
+            size: (300, 200)
+            size_hint: (None, None)
+            padding: 10
+            spacing: 10
+
+            canvas.before:
+                Color:
+                    rgba: (63/255, 63/255, 63/255, 1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size     
+                    radius: [16]
+
+            Label:
+                text: "Mes's Hydrocarbon Puzzle"
+                size: (300, 50)
+                size_hint_y: None
+                font_size: 20
+                font_name: 'OpenSans-Bold'
+            
+            BoxLayout:
+                orientation: 'horizontal'
+                size: (225, 25)
+                size_hint: (None, None)
+
+                Label:
+                    text: "Number of segments"
+                    size: (self.texture_size[0] + 10,  25)
+                    size_hint: (None, None)
+                    valign: 'middle'
+                    halign: 'left'
+                    font_size: 14
+                    font_name: 'OpenSans-Bold'
+
+                Widget:
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    
+                    Button:
+                        text: '-'
+                        size: (25, 25)
+                        size_hint: (None, None)
+                        font_size: 20
+                        font_name: 'OpenSans-Bold'
+                        on_press: root.removeSegment()
+
+                    Label:
+                        id: segments_label
+                        text: "1"
+                        size: (self.texture_size[0] + 20,  25)
+                        size_hint: (None, None)
+                        valign: 'middle'
+                        font_size: 24
+                        font_name: 'OpenSans-Bold'
+
+                    Button:
+                        text: "+"
+                        size: (25, 25)
+                        size_hint: (None, None)
+                        font_size: 20
+                        font_name: 'OpenSans-Bold'
+                        on_press: root.addSegment()
+
+            BoxLayout:
+                orientation: 'horizontal'
+                size: (266, 25)
+                size_hint: (None, None)
+
+                Label:
+                    text: "Draw the circles"
+                    size: (self.texture_size[0] + 10,  25)
+                    size_hint: (None, None)
+                    valign: 'middle'
+                    halign: 'left'
+                    font_size: 14
+                    font_name: 'OpenSans-Bold'
+
+                Widget:
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    
+                    Switch:
+                        id: draw_circles
+
+
+            Widget:
